@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Upload } from "lucide-react";
+import { Upload, Loader } from "lucide-react";
 import { motion } from "framer-motion";
 import AiLogo from "../assets/ai-logo.png";
 import Prism from "prismjs";
@@ -13,6 +13,7 @@ const Analyze = () => {
   const [analysisResults, setAnalysisResults] = useState(null);
   const [error, setError] = useState("");
   const [address, setAddress] = useState("");
+  const [loading, setLoading] = useState(false)
 
   const categories = [
     { id: "upload", name: "Upload" },
@@ -32,7 +33,7 @@ const Analyze = () => {
 
   const handleUploadSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true)
     const fileInput = e.target.elements.contractFile;
     const file = fileInput.files[0];
 
@@ -65,6 +66,8 @@ const Analyze = () => {
       // setAnalysisResults(mockResults);
     } catch (err) {
       setError(err.message);
+    }finally{
+      setLoading(false)
     }
   };
   const handleAddressSubmit = async (e) => {
@@ -130,13 +133,13 @@ const Analyze = () => {
             </div>
           </div>
           <button
+          disabled={loading}
             type="submit"
             className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-200"
-          >
+          > {loading && <Loader className="animate-spin bg-white text-white"/>}
             Analyze Contract {file && `(${file.name})`}
           </button>
         </form>
-
         {error && <div className="mt-6 text-red-500">{error}</div>}
 
         {analysisResults && (
