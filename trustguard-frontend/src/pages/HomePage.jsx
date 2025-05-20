@@ -111,21 +111,14 @@ function HomePage() {
             transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
           />
         </div>
-        {!loggedIn ? (
-          <button
-            onClick={login}
-            className="px-6 py-3  bg-blue-600 rounded-3xl hover:bg-blue-500 text-lg"
-          >
-            Login
-          </button>
-        ) : (
+        {loggedIn &&
           <button
             onClick={handleGetStarted}
             className="px-6 py-3  bg-blue-600 rounded-3xl hover:bg-blue-500 shadow-2xl text-lg"
           >
             Get Started
           </button>
-        )}
+        }
       </main>
     </div>
   );
