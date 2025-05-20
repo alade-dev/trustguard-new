@@ -7,7 +7,7 @@ const clientId = import.meta.env.VITE_WEB3AUTH_CLIENT_ID || "hhhhhhhh";
 const chainConfig = {
   chainNamespace: CHAIN_NAMESPACES.EIP155,
   chainId: "0xaa36a7",
-  rpcTarget: "https://rpc.ankr.com/eth_sepolia",
+  rpcTarget: "https://ethereum-sepolia-rpc.publicnode.com",
   displayName: "Sepolia Testnet",
   blockExplorerUrl: "https://sepolia.etherscan.io/",
   ticker: "ETH",
