@@ -136,7 +136,7 @@ const Analyze = () => {
           disabled={loading}
             type="submit"
             className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-200"
-          > {loading && <Loader className="animate-spin bg-white text-white"/>}
+          > {loading && <Loader className="animate-spin text-white"/>}
             Analyze Contract {file && `(${file.name})`}
           </button>
         </form>
